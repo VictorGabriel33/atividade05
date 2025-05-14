@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Curiosidade Felina</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 50px;
+      background: #e0f7fa;
+    }
+    #box {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #bbb;
+      display: inline-block;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h2>Descubra uma curiosidade felina! 🐱</h2>
+    <button onclick="mostrarFato()">Me surpreenda!</button>
+    <p id="fato"></p>
+  </div>
+
+  <script>
+    async function mostrarFato() {
+      try {
+        const res = await fetch("https://catfact.ninja/fact");
+        const json = await res.json();
+        fato.textContent = "🐾 " + json.fact;
+      } catch {
+        fato.textContent = "😿 Não consegui buscar um fato agora. Tente de novo!";
+      }
+    }
+  </script>
+</body>
+</html>
